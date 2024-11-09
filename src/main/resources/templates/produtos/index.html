@@ -46,6 +46,7 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>Estoque</th>
@@ -55,6 +56,7 @@
             </thead>
             <tbody>
                 <tr th:each="produto : ${produtos}">
+                    <td th:text="${produto.id}"></td>
                     <td th:text="${produto.nome}"></td>
                     <td th:text="${produto.descricao}"></td>
                     <td th:text="${produto.estoque}"></td>
@@ -65,6 +67,8 @@
             </tbody>
         </table>
     </div>
+
+    <button class="btn btn-primary">coisa</button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

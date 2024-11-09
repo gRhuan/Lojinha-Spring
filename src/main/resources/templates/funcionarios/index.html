@@ -15,7 +15,7 @@
     <nav class="navbar navbar-light custom-navbar">
         <div class="container">
             <!-- Logotipo ou Nome do Site -->
-            <a class="navbar-brand" href="#">Minha Loja</a>
+            <a class="navbar-brand" href="@{/}">Minha Loja</a>
 
             <!-- Links de Navegação -->
             <ul class="navbar-nav d-flex flex-row gap-3">
@@ -44,6 +44,7 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Nome</th>
                     <th>CPF</th>
                     <th>Email</th>
@@ -55,6 +56,7 @@
             </thead>
             <tbody>
                 <tr th:each="funcionario : ${funcionarios}">
+                    <td th:text="${funcionario.id}"></td>
                     <td th:text="${funcionario.nome}"></td>
                     <td th:text="${funcionario.cpf}"></td>
                     <td th:text="${funcionario.email}"></td>
@@ -67,6 +69,8 @@
             </tbody>
         </table>
     </div>
+
+    
 
     <script src="../script/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

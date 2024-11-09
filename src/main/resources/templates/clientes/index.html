@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/clientesStyle.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -41,9 +42,16 @@
     <!-- Tabela de clientes -->
     <div class="center">
         <h1>Lista de Clientes</h1>
+
+        <!-- Botão para abrir o diálogo -->
+        <button type="button" class="btn btn-primary mb-3" id="openDialogButton">
+            Novo Cliente
+        </button>
+
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Nome</th>
                     <th>CPF</th>
                     <th>Email</th>
@@ -54,6 +62,7 @@
             </thead>
             <tbody>
                 <tr th:each="clientes : ${clientes}">
+                    <td th:text="${clientes.id}"></td>
                     <td th:text="${clientes.nome}"></td>
                     <td th:text="${clientes.cpf}"></td>
                     <td th:text="${clientes.email}"></td>
@@ -66,9 +75,40 @@
         </table>
     </div>
 
+    <!-- Modal para Adicionar Novo Cliente -->
+    <dialog id="novoClienteDialog">
+        <form th:action="@{/clientes/adicionar}" method="post" class="form-group">
+            <h3>Novo Cliente</h3>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="endereco" class="form-label">Endereço</label>
+                <input type="text" class="form-control" id="endereco" name="endereco" required>
+            </div>
+            <div class="mb-3">
+                <label for="celular" class="form-label">Celular</label>
+                <input type="text" class="form-control" id="celular" name="celular" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="button" class="btn btn-secondary" id="closeDialogButton">Cancelar</button>
+        </form>
+    </dialog>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <script type="text/javascript" th:src="@{/js/clientes.js}"></script>
 </body>
 
 </html>
