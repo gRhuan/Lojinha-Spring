@@ -39,4 +39,4 @@ Para rodar a aplicação localmente, siga os passos:
 
 1. Clone o repositório para o seu computador:
    ```bash
-   git clone https://github.com/gRhuan/
+   git clone https://github.com/gRhuan/Lojinha-Spring
