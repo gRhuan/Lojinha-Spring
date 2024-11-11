@@ -49,6 +49,6 @@ Para rodar a aplicação localmente, siga os passos:
   ```bash
   ./mvnw spring-boot:run
 
-Depois, acesse a aplicação no navegador pelo endereço http://localhost:8080.
+4. Depois, acesse a aplicação no navegador pelo endereço http://localhost:8080.
 
 
