@@ -33,22 +33,10 @@ Aqui estão algumas das principais funcionalidades do projeto:
 - **Atualização de Produtos, Clientes e Funcionários**: Atualize informações de qualquer registro.
 - **Remoção de Produtos, Clientes e Funcionários**: Exclua registros da loja.
 
-## 🚀 Como Executar
+## 💬 Contribuindo
 
-Para rodar a aplicação localmente, siga os passos:
+Este projeto foi criado para fins de aprendizado. Se você tiver sugestões ou melhorias, sinta-se à vontade para contribuir!
 
-1. Clone o repositório para o seu computador:
-   ```bash
-   git clone https://github.com/seu_usuario/seu_repositorio.git
-   
-2. Navegue até a pasta do projeto:
-   ```bash
-   cd /Lojinha-Spring
-   
-3.Execute o projeto com o Maven:
-  ```bash
-  ./mvnw spring-boot:run
+## 📞 Contato
 
-4. Depois, acesse a aplicação no navegador pelo endereço http://localhost:8080.
-
-
+Caso tenha dúvidas ou sugestões, entre em contato por [gladysonfonseca@unifucamp.edu.br](mailto:gladysonfonseca@unifucamp.edu.br).
