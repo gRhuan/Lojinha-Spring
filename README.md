@@ -40,12 +40,15 @@ Para rodar a aplicação localmente, siga os passos:
 1. Clone o repositório para o seu computador:
    ```bash
    git clone https://github.com/seu_usuario/seu_repositorio.git
+   
 2. Navegue até a pasta do projeto:
    ```bash
    cd /Lojinha-Spring
-3.
    
+3.Execute o projeto com o Maven:
+  ```bash
+  ./mvnw spring-boot:run
 
-1. Clone o repositório para o seu computador:
-   ```bash
-   git clone https://github.com/gRhuan/Lojinha-Spring
+Depois, acesse a aplicação no navegador pelo endereço http://localhost:8080.
+
+
