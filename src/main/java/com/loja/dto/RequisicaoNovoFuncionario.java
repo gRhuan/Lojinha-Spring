@@ -20,7 +20,7 @@ public class RequisicaoNovoFuncionario {
         funcionarios.setSalario(this.salario);
         funcionarios.setEmail(this.email);
         funcionarios.setCargo(this.cargo);
-        funcionarios.setCodigo(codigo);
+        funcionarios.setCodigo(this.codigo);
         return funcionarios;
     }
 

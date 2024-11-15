@@ -5,14 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.loja.dto.RequisicaoNovoFuncionario;
 import com.loja.model.Funcionarios;
 import com.loja.repository.FuncionariosRepository;
 import com.loja.service.FuncionariosService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
@@ -44,4 +43,6 @@ public class FuncionariosController {
         this.funcionariosRepository.save(funcionario);
         return "redirect:/funcionarios";
     }
+
+    
 }
