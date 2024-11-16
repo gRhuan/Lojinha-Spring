@@ -54,7 +54,7 @@ public class ClientesController {
         return clientesRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("/produtos/{id}/editar")
+    @GetMapping("/clientes/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
         Optional<Clientes> optional = this.clientesRepository.findById(id);
         if (optional.isPresent()) {
