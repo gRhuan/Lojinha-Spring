@@ -75,7 +75,7 @@ public class FuncionariosController {
             funcionarios.setCpf(requisicao.getCpf());
             funcionarios.setEmail(requisicao.getEmail());
             funcionarios.setSalario(requisicao.getSalario());
-            funcionarios.setCodigo(requisicao.getCodigo());
+            funcionarios.setSenha(requisicao.getSenha());
             this.funcionariosRepository.save(funcionarios);
         }
         return "redirect:/funcionarios";

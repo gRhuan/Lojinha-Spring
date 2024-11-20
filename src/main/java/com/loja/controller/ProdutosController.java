@@ -21,6 +21,7 @@ public class ProdutosController {
 
     @Autowired
     private ProdutosService produtosService; // Injetando o serviço
+    @Autowired
     private ProdutosRepository produtosRepository;
 
     @GetMapping("/api/produtos")
@@ -38,13 +39,20 @@ public class ProdutosController {
         return mv;
     }
 
-    @GetMapping("/produtos/{id}") //Aqui ele busca as informações do produto pelo id
+    @PostMapping("/produtos/adicionar")
+    public String criar(RequisicaoNovoProduto requisicao) {
+        Produtos produto = requisicao.toProdutos();
+        this.produtosRepository.save(produto);
+        return "redirect:/produtos";
+    }
+
+    @GetMapping("/produtos/{id}") // Aqui ele busca as informações do produto pelo id
     @ResponseBody
     public Produtos getProduto(@PathVariable Long id) {
         return produtosRepository.findById(id).orElse(null);
     }
 
-    @GetMapping("/produtos/{id}/editar")
+    @PostMapping("/produtos/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
         Optional<Produtos> optional = this.produtosRepository.findById(id);
         if (optional.isPresent()) {

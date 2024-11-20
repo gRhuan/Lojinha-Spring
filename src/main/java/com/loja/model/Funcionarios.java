@@ -32,8 +32,8 @@ public class Funcionarios {
     @Column(name = "cargo", length = 25)
     private String cargo;
 
-    @Column(name = "codigo")
-    private int codigo;
+    @Column(name = "senha", length = 40)
+    private String senha;
 
 
     public long getId() {
@@ -84,12 +84,12 @@ public class Funcionarios {
         this.cargo = cargo;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     

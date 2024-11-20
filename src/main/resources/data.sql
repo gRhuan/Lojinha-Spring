@@ -12,15 +12,8 @@ INSERT INTO produtos (nome, descricao, estoque, valor) VALUES
 ('Caixa de Som Bluetooth', 'Caixa de som portátil com Bluetooth', 80, 300.00);
 
 -- Inserindo dados na tabela funcionarios
-INSERT INTO funcionarios (nome, cpf, salario, email, cargo, codigo) VALUES
-('João Silva', '12345678900', 2500.00, 'joao@empresa.com', 'Vendedor', 101),
-('Maria Souza', '98765432100', 3000.00, 'maria@empresa.com', 'Gerente', 102),
-('Carlos Pereira', '55555555555', 2200.00, 'carlos@empresa.com', 'Assistente', 103),
-('Ricardo Gomes', '11111111111', 2400.00, 'ricardo@empresa.com', 'Analista', 104),
-('Fernanda Oliveira', '22222222222', 2800.00, 'fernanda@empresa.com', 'Supervisora', 105),
-('Luiz Santos', '66666666666', 2600.00, 'luiz@empresa.com', 'Vendedor', 106),
-('Sonia Melo', '77777777777', 2900.00, 'sonia@empresa.com', 'Financeiro', 107),
-('Paulo Almeida', '88888888888', 3100.00, 'paulo@empresa.com', 'RH', 108);
+INSERT INTO funcionarios (nome, cpf, salario, email, cargo, senha) VALUES
+('João Silva', '12345678900', 2500.00, 'joao@empresa.com', 'Vendedor', '123');
 
 -- Inserindo dados na tabela clientes
 INSERT INTO clientes (nome, cpf, email, endereco, celular) VALUES
