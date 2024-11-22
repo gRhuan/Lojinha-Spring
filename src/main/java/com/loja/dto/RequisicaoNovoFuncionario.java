@@ -11,7 +11,7 @@ public class RequisicaoNovoFuncionario {
     private BigDecimal salario;
     private String email;
     private String cargo;
-    private int codigo;
+    private String senha;
 
     public Funcionarios toFuncionario() {
         Funcionarios funcionarios = new Funcionarios();
@@ -20,7 +20,7 @@ public class RequisicaoNovoFuncionario {
         funcionarios.setSalario(this.salario);
         funcionarios.setEmail(this.email);
         funcionarios.setCargo(this.cargo);
-        funcionarios.setCodigo(this.codigo);
+        funcionarios.setSenha(this.senha);
         return funcionarios;
     }
 
@@ -64,16 +64,13 @@ public class RequisicaoNovoFuncionario {
         this.cargo = cargo;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
-
-    
-
     
 
 }

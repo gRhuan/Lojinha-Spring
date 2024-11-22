@@ -23,5 +23,5 @@ CREATE TABLE IF NOT EXISTS funcionarios (
     salario DECIMAL(10, 2) NOT NULL,
     email VARCHAR(40),
     cargo VARCHAR(25),
-    codigo INT
+    senha Varchar(40)
 );

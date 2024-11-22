@@ -43,6 +43,9 @@
 
     <div class="center">
         <h1>Lista de Produtos</h1>
+        <button type="button" class="btn btn-primary mb-3" id="openDialogButton">
+            Adicionar Poduto
+        </button>
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
@@ -62,13 +65,59 @@
                     <td th:text="${produto.estoque}"></td>
                     <td th:text="${produto.valor}"></td>
                     <td><button type="button" class="btn btn-warning">Editar</button></td>
-                    <td><button type="button" class="btn btn-danger">Excluir</button></td>
+                    <td>
+                        <form th:action="@{/produtos/{id}/deletar(id=${produto.id})}" method="post">
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('Tem certeza que deseja deletar este cliente?');">Excluir</button>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <button class="btn btn-primary">coisa</button>
+        <!-- Modal novo Funcionario -->
+
+        <dialog id="novoProdutoDialog">
+            <form th:action="@{/produtos/adicionar}" method="post" class="form-group">
+                <h3>Adicionar um Produto</h3>
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" maxlength="20" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descricao" class="form-label">Descrição</label>
+                    <input type="text" class="form-control" id="descricao" name="descricao" maxlength="50" required>
+                </div>
+                <div class="mb-3">
+                    <label for="estoque" class="form-label">Estoque</label>
+                    <input type="text" class="form-control" id="estoque" name="estoque" required>
+                </div>
+                <div class="mb-3">
+                    <label for="valor" class="form-label">Valor</label>
+                    <input type="text" class="form-control" id="valor" name="valor" maxlength="10" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-secondary" id="closeDialogButton">Cancelar</button>
+            </form>
+        </dialog>
+    
+        <script>
+            const button = document.getElementById("novoProdutoDialog")
+            const openDialogButton = document.getElementById("openDialogButton");
+            const closeDialogButton = document.getElementById("closeDialogButton");
+    
+            // Abre o diálogo ao clicar no botão
+            openDialogButton.addEventListener("click", () => {
+                button.showModal();
+            });
+    
+            // Fecha o diálogo ao clicar no botão de cancelar
+            closeDialogButton.addEventListener("click", () => {
+                button.close();
+            });
+    
+        </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
