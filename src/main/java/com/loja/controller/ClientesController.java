@@ -1,94 +1,66 @@
 package com.loja.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.loja.dto.RequisicaoNovoCliente;
 import com.loja.model.Clientes;
-import com.loja.repository.ClientesRepository;
-import com.loja.service.ClientesService;
+import com.loja.service.ClienteService;
 
 @Controller
+@RequestMapping("/clientes") // Agrupando rotas relacionadas a clientes
 public class ClientesController {
 
     @Autowired
-    private ClientesService clientesService;
+    private ClienteService clienteService;
 
-    @Autowired
-    private ClientesRepository clientesRepository;
-
-    @GetMapping("/api/clientes")
-    public List<Clientes> clientes() {
-        return clientesService.getAllClientes();
+    @GetMapping("/api")
+    @ResponseBody
+    public List<Clientes> clientesApi() {
+        return clienteService.findAll();
     }
 
-    @GetMapping("/clientes")
+    @GetMapping
     public ModelAndView index() {
-        List<Clientes> clientes = clientesService.getAllClientes();
-
+        List<Clientes> clientes = clienteService.findAll();
         ModelAndView mv = new ModelAndView("clientes/index");
-
         mv.addObject("clientes", clientes);
-
         return mv;
     }
 
-    @PostMapping("/clientes/adicionar")
+    @PostMapping("/adicionar")
     public String criar(RequisicaoNovoCliente requisicao) {
-        Clientes cliente = requisicao.toClientes();
-        this.clientesRepository.save(cliente);
+        clienteService.save(requisicao);
         return "redirect:/clientes";
     }
 
-    @GetMapping("/clientes/{id}")
+    @GetMapping("/{id}")
     @ResponseBody
-    public Clientes getProduto(@PathVariable Long id) {
-        return clientesRepository.findById(id).orElse(null);
+    public Clientes getCliente(@PathVariable Long id) {
+        return clienteService.findById(id);
     }
 
-    @GetMapping("/clientes/{id}/editar")
+    @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
-        Optional<Clientes> optional = this.clientesRepository.findById(id);
-        if (optional.isPresent()) {
-            Clientes clientes = optional.get();
-            ModelAndView mv = new ModelAndView("clientes/editar");
-            mv.addObject("clientes", clientes);
-            return mv;
-        } else {
-            return new ModelAndView("redirect:/clientes");
-        }
+        Clientes cliente = clienteService.findById(id);
+        ModelAndView mv = new ModelAndView("clientes/editar");
+        mv.addObject("clientes", cliente);
+        return mv;
     }
 
-    @PostMapping("/clientes/{id}/atualizar")
+    @PostMapping("/{id}/atualizar")
     public String atualizar(@PathVariable Long id, RequisicaoNovoCliente requisicao) {
-        Optional<Clientes> optional = this.clientesRepository.findById(id);
-        if (optional.isPresent()) {
-            Clientes clientes = optional.get();
-            clientes.setNome(requisicao.getNome());
-            clientes.setCpf(requisicao.getCpf());
-            clientes.setEmail(requisicao.getEmail());
-            clientes.setEndereco(requisicao.getEndereco());
-            this.clientesRepository.save(clientes);
-        }
+        clienteService.updateById(id, requisicao);
         return "redirect:/clientes";
     }
 
-    @PostMapping("/clientes/{id}/deletar")
+    @PostMapping("/{id}/deletar")
     public String deletar(@PathVariable Long id) {
-        Optional<Clientes> optional = this.clientesRepository.findById(id);
-        if (optional.isPresent()) {
-            this.clientesRepository.deleteById(id);
-        }
+        clienteService.deleteById(id);
         return "redirect:/clientes";
     }
-
-
 }

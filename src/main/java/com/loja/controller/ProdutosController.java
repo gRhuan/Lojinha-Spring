@@ -1,90 +1,66 @@
 package com.loja.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.loja.dto.RequisicaoNovoProduto;
 import com.loja.model.Produtos;
-import com.loja.repository.ProdutosRepository;
-import com.loja.service.ProdutosService;
+import com.loja.service.ProdutoService;
 
 @Controller
+@RequestMapping("/produtos") // Agrupando rotas relacionadas a produtos
 public class ProdutosController {
 
     @Autowired
-    private ProdutosService produtosService; // Injetando o serviço
-    @Autowired
-    private ProdutosRepository produtosRepository;
+    private ProdutoService produtoService;
 
-    @GetMapping("/api/produtos")
+    @GetMapping("/api")
+    @ResponseBody
     public List<Produtos> getAllProdutos() {
-        return produtosService.getAllProdutos(); // Chamando o serviço
+        return produtoService.findAll();
     }
 
-    @GetMapping("/produtos")
+    @GetMapping
     public ModelAndView index() {
-        List<Produtos> produtos = produtosService.getAllProdutos();
-
+        List<Produtos> produtos = produtoService.findAll();
         ModelAndView mv = new ModelAndView("produtos/index");
-
         mv.addObject("produtos", produtos);
         return mv;
     }
 
-    @PostMapping("/produtos/adicionar")
+    @PostMapping("/adicionar")
     public String criar(RequisicaoNovoProduto requisicao) {
-        Produtos produto = requisicao.toProdutos();
-        this.produtosRepository.save(produto);
+        produtoService.save(requisicao);
         return "redirect:/produtos";
     }
 
-    @GetMapping("/produtos/{id}") // Aqui ele busca as informações do produto pelo id
+    @GetMapping("/{id}")
     @ResponseBody
     public Produtos getProduto(@PathVariable Long id) {
-        return produtosRepository.findById(id).orElse(null);
+        return produtoService.findById(id);
     }
 
-    @PostMapping("/produtos/{id}/editar")
+    @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
-        Optional<Produtos> optional = this.produtosRepository.findById(id);
-        if (optional.isPresent()) {
-            Produtos produto = optional.get();
-            ModelAndView mv = new ModelAndView("produtos/editar");
-            mv.addObject("produto", produto);
-            return mv;
-        } else {
-            return new ModelAndView("redirect:/produtos");
-        }
+        Produtos produto = produtoService.findById(id);
+        ModelAndView mv = new ModelAndView("produtos/editar");
+        mv.addObject("produto", produto);
+        return mv;
     }
 
-    @PostMapping("/produtos/{id}/atualizar")
+    @PostMapping("/{id}/atualizar")
     public String atualizar(@PathVariable Long id, RequisicaoNovoProduto requisicao) {
-        Optional<Produtos> optional = this.produtosRepository.findById(id);
-        if (optional.isPresent()) {
-            Produtos produto = optional.get();
-            produto.setNome(requisicao.getNome());
-            produto.setDescricao(requisicao.getDescricao());
-            produto.setValor(requisicao.getValor());
-            produto.setEstoque(requisicao.getEstoque());
-            this.produtosRepository.save(produto);
-        }
+        produtoService.updateById(id, requisicao);
         return "redirect:/produtos";
     }
 
-    @PostMapping("/produtos/{id}/deletar")
+    @PostMapping("/{id}/deletar")
     public String deletar(@PathVariable Long id) {
-        Optional<Produtos> optional = this.produtosRepository.findById(id);
-        if (optional.isPresent()) {
-            this.produtosRepository.deleteById(id);
-        }
+        produtoService.deleteById(id);
         return "redirect:/produtos";
     }
 }
