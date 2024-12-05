@@ -1,0 +1,153 @@
+body {
+    
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+.center {
+    max-width: 75%;
+    margin: 0 auto;
+    padding-top: 100px;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+/* Estilizar o título */
+h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #343a40;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilizar a tabela */
+table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+th,
+td {
+    text-align: center;
+    padding: 15px;
+}
+
+/* Cabeçalho da tabela */
+thead {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Cor de fundo para linhas alternadas */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Sombras e estilo marcante nos botões */
+/* Botão Editar (Amarelo) */
+.btn-warning {
+    background-color: #fff;            /* Fundo branco */
+    color: #ffc107;                    /* Texto amarelo */
+    border: 2px solid #ffc107;         /* Borda amarela */
+    transition: all 0.3s ease;         /* Suaviza o efeito de hover */
+    hover {
+        background-color: #ffc107;         /* Fundo amarelo ao passar o mouse */
+        color: black;                       /* Texto branco ao passar o mouse */
+    }
+}
+
+/* Botão Excluir (Vermelho) */
+.btn-danger {
+    background-color: #fff;            /* Fundo branco */
+    color: #dc3545;                    /* Texto vermelho */
+    border: 2px solid #dc3545;         /* Borda vermelha */
+    transition: all 0.3s ease;         /* Suaviza o efeito de hover */
+    hover {
+        background-color: #dc3545;         /* Fundo vermelho ao passar o mouse */
+        color: #fff;                       /* Texto branco ao passar o mouse */
+    }
+}
+
+
+.btn-primary {
+    background-color: #fff;         
+    color:blue;                    
+    border: 2px solid blue;         
+    transition: all 0.3s ease;
+    
+    hover{
+        background-color: blue;         /* Fundo azul ao passar o mouse */
+        color: #fff; 
+    }
+}
+
+
+.custom-navbar {
+    background-color: #ffffff;        /* Fundo branco */
+    border: 1px solid #ddd;           /* Borda cinza suave */
+    border-radius: 8px;               /* Bordas arredondadas */
+    padding: 20px 20px;               /* Espaçamento interno */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    margin-top: 5px;                  /* Aproximar mais do topo */
+    width: 75%;                        /* Largura de 75% */
+    margin-left: auto;                 /* Alinha a margem à esquerda */
+    margin-right: auto;                /* Alinha a margem à direita */
+    margin-bottom: 70px;
+}
+
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.nav-link {
+    color: #555;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    hover {
+        background-color: #f0f0f0;        /* Fundo cinza claro no hover */
+        color: #007bff;                   /* Texto azul no hover */
+    }
+}
+
+.blur-background {
+    filter: blur(5px);
+}
+
+/* Estilização do diálogo */
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    width: 600px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    font-size: 1rem;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+/* Título e botões */
+h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+button.btn {
+    margin-top: 10px;
+}
+
