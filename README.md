@@ -1,6 +1,4 @@
-# Lojinha Web 📦
-
-Bem-vindo ao projeto **Lojinha Web**! Este é um projeto de loja online simples, desenvolvido com **Spring Boot** como prática de Programação Orientada a Objetos (POO). A aplicação gerencia informações de produtos, clientes e funcionários em um banco de dados e utiliza controladores para gerenciar as ações.
+Bem-vindo, Este é um projeto de loja online simples, desenvolvido com **Spring Boot** como prática de Programação Orientada a Objetos (POO). A aplicação gerencia informações de produtos, clientes e funcionários em um banco de dados e utiliza controladores para gerenciar as ações.
 
 ## 🔧 Tecnologias Utilizadas
 
